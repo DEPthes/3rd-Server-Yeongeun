@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+        </div>
+        <button type="submit">등록</button> </form>
+</div> <!-- /container -->
+</body>
+</html>
+<!--"/members/new"에 post방식으로 넘어가 MemberController의 @PostMapping에 들어감-->
+<!--데이터를 form에 넣어 전달하여 등록할때 Post를 자주쓰고, Get은 조회할때 주로 쓴다.-->
