@@ -6,7 +6,6 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 //@SpringBootApplication
 public class JpaMain {
     public static void main(String[] args) { /*psvm*/
@@ -18,10 +17,15 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member findMember = em.find(Member.class, 1L);
-            findMember.setName("HelloJPA");
+            //Member 객체 생성
+            Member member=new Member();
 
+            member.setId(1L);
+            member.setName("케이시");
+
+            em.persist(member); //member 저장
             tx.commit();
+
         } catch (Exception e) {
             tx.rollback();
         } finally {
