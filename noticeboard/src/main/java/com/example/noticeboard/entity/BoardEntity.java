@@ -40,4 +40,16 @@ public class BoardEntity extends BaseEntity {
         boardEntity.setBoardHits(0);
         return boardEntity;
     }
+
+    public static BoardEntity toUpdateEntity(BoardDTO boardDTO) {
+        // DTO에 담긴 값을 Entity로 옮겨담는 작업
+        BoardEntity boardEntity = new BoardEntity(); //id가 있어야만 update쿼리가 전달될 것임.
+        boardEntity.setId(boardDTO.getId());
+        boardEntity.setBoardWriter(boardDTO.getBoardWriter());
+        boardEntity.setBoardPass(boardDTO.getBoardPass());
+        boardEntity.setBoardTitle(boardDTO.getBoardTitle());
+        boardEntity.setBoardContents(boardDTO.getBoardContents());
+        boardEntity.setBoardHits(boardDTO.getBoardHits());
+        return boardEntity;
+    }
 }

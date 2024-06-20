@@ -22,6 +22,6 @@ public class BaseEntity {
 
     // 업데이트시 시간정보 제공
     @UpdateTimestamp
-    @Column(insertable = false) //삽입시에는 관여하지 않는다.
+    @Column(name = "updated_time", insertable = false) //삽입시에는 관여하지 않는다.
     private LocalDateTime updatedTime;
 }
