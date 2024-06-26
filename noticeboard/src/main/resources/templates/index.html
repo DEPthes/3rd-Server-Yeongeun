@@ -7,6 +7,7 @@
 <body>
     <button onclick = "saveReq()">글 작성</button>  <!--자바스크립트 활용 -->
     <button onclick = "listReq()">글 목록</button>
+    <button onclick= "pagingReq()">페이징목록</button>
 </body>
 <script>
 
@@ -17,6 +18,11 @@
     const listReq = () => {
         location.href = "/board/";
     }
+
+    const pagingReq = () => {
+        location.href = "/board/paging";
+    }
+
 
 </script>
 </html>
