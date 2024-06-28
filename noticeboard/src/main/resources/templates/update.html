@@ -2,23 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>update</title>
+  <title>Update</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="container mt-5">
+<h2>글 수정</h2>
 <form action="/board/update" method="post" name="updateForm">
   <input type="hidden" name="id" th:value="${boardUpdate.id}">
-  writer: <input type="text" name="boardWriter" th:value="${boardUpdate.boardWriter}" readonly> <br>
-  pass: <input type="text" name="boardPass" id="boardPass"> <br>
-  title: <input type="text" name="boardTitle" th:value="${boardUpdate.boardTitle}"> <br>
-  contents: <textarea name="boardContents" cols="30" rows="10" th:text="${boardUpdate.boardContents}"></textarea> <br>
+  <div class="form-group">
+    <label for="boardWriter">Writer:</label>
+    <input type="text" class="form-control" name="boardWriter" id="boardWriter" th:value="${boardUpdate.boardWriter}" readonly>
+  </div>
+  <div class="form-group">
+    <label for="boardPass">Pass:</label>
+    <input type="password" class="form-control" name="boardPass" id="boardPass" required>
+  </div>
+  <div class="form-group">
+    <label for="boardTitle">Title:</label>
+    <input type="text" class="form-control" name="boardTitle" id="boardTitle" th:value="${boardUpdate.boardTitle}" required>
+  </div>
+  <div class="form-group">
+    <label for="boardContents">Contents:</label>
+    <textarea class="form-control" name="boardContents" id="boardContents" cols="30" rows="10" th:text="${boardUpdate.boardContents}" required></textarea>
+  </div>
   <input type="hidden" name="boardHits" th:value="${boardUpdate.boardHits}">
-  <input type="button" value="글수정" onclick="boardUpdate()">
+  <button type="button" class="btn btn-primary" onclick="boardUpdate()">글 수정</button>
 </form>
 <script th:inline="javascript">
   const boardUpdate = () => {
     const pass = [[${boardUpdate.boardPass}]];
     const inputPass = document.getElementById("boardPass").value;
-    if (pass == inputPass) {
+    if (pass === inputPass) {
       document.updateForm.submit();
     } else {
       alert("비밀번호가 일치하지 않습니다!");
@@ -26,3 +40,4 @@
   }
 </script>
 </body>
+</html>

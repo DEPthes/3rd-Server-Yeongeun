@@ -2,17 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>list</title>
+    <title>List</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-<table>
+<body class="container mt-5">
+<h2>글 목록</h2>
+<table class="table table-striped">
+    <thead>
     <tr>
-        <th>id</th>
-        <th>title</th>
-        <th>writer</th>
-        <th>date</th>
-        <th>hits</th>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Writer</th>
+        <th>Date</th>
+        <th>Hits</th>
     </tr>
+    </thead>
+    <tbody>
     <tr th:each="board: ${boardList}">
         <td th:text="${board.id}"></td>
         <td><a th:href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>
@@ -20,6 +25,7 @@
         <td th:text="*{#temporals.format(board.boardUpdatedTime != null ? board.boardUpdatedTime : board.boardCreatedTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
         <td th:text="${board.boardHits}"></td>
     </tr>
+    </tbody>
 </table>
 </body>
 </html>

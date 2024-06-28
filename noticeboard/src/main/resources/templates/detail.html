@@ -2,65 +2,60 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>detail</title>
-    <!-- jquery cdn -->
+    <title>Detail</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
-<body>
-<table>
+<body class="container mt-5">
+<h2>글 상세보기</h2>
+<table class="table table-bordered">
     <tr>
-        <th>id</th>
+        <th>ID</th>
         <td th:text="${board.id}"></td>
     </tr>
     <tr>
-        <th>title</th>
+        <th>Title</th>
         <td th:text="${board.boardTitle}"></td>
     </tr>
     <tr>
-        <th>writer</th>
+        <th>Writer</th>
         <td th:text="${board.boardWriter}"></td>
     </tr>
     <tr th:if="${board.boardCreatedTime != null}">
-        <th>date</th>
+        <th>Date</th>
         <td th:text="${board.boardCreatedTime}"></td>
     </tr>
     <tr th:if="${board.boardCreatedTime == null}">
-        <th>date</th>
+        <th>Date</th>
         <td th:text="${board.boardUpdatedTime}"></td>
     </tr>
     <tr>
-        <th>hits</th>
+        <th>Hits</th>
         <td th:text="${board.boardHits}"></td>
     </tr>
     <tr>
-        <th>contents</th>
+        <th>Contents</th>
         <td th:text="${board.boardContents}"></td>
     </tr>
-<!--    <tr th:if="${board.fileAttached == 1}">-->
-<!--        <th>image</th>-->
-<!--        <td><img th:src="@{|/upload/${board.storedFileName}|}" alt=""></td>-->
-<!--    </tr>-->
 </table>
-<button onclick="listReq()">목록</button>
-<button onclick="updateReq()">수정</button>
-<button onclick="deleteReq()">삭제</button>
-
-</body>
+<div class="d-flex justify-content-center">
+    <button class="btn btn-secondary mx-2" onclick="listReq()">목록</button>
+    <button class="btn btn-primary mx-2" onclick="updateReq()">수정</button>
+    <button class="btn btn-danger mx-2" onclick="deleteReq()">삭제</button>
+</div>
 <script th:inline="javascript">
     const listReq = () => {
-        console.log("목록 요청");
         const page = [[${page}]];
-        location.href = "/board/paging?page="+page;
+        location.href = "/board/paging?page=" + page;
     }
     const updateReq = () => {
-        console.log("수정 요청");
         const id = [[${board.id}]];
         location.href = "/board/update/" + id;
     }
     const deleteReq = () => {
-        console.log("삭제 요청");
         const id = [[${board.id}]];
         location.href = "/board/delete/" + id;
     }
 </script>
+</body>
 </html>
